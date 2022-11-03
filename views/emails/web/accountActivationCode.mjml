@@ -1,0 +1,21 @@
+<mjml>
+  <mj-body background-color="#f8f9fa">
+    <mj-section >
+      <mj-column background-color="white" padding="32px">
+        <mj-text font-size="14px" align="center" font-family="helvetica">Ristorante | Pizzeria </mj-text>
+        <mj-text font-size="20px" align="center" font-family="helvetica">Fittizzio </mj-text>
+                <mj-divider border-width="1px"></mj-divider>
+        <mj-text font-size="12px"  font-family="helvetica">
+        Attiva il tuo account, cliccando sul seguente bottone.
+        </mj-text>
+        <mj-button href="{{link}}">Attiva account</mj-button>
+				<mj-text font-size="12px"  font-family="helvetica">
+        Se il link dal bottone non funziona, copia il seguente link nel browser:
+        </mj-text>
+        <mj-text>
+        {{link}}
+        </mj-text>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>
