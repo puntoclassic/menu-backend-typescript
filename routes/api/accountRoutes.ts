@@ -60,14 +60,6 @@ router.get(
   },
 );
 
-router.get(
-  "/session",
-  requireApiLogged,
-  async (req: Request, res: Response) => {
-    res.status(200).json(req.session.user);
-  },
-);
-
 router.post("/login", loginValidator, async (req: Request, res: Response) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {

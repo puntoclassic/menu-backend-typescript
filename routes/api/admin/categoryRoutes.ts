@@ -4,33 +4,33 @@ import { validationResult } from "express-validator";
 import { unlink } from "fs";
 import path from "path";
 import { rootPath } from "../../../app";
-import requireApiRole from "../../../policies/requireApiRole";
 import categoryService from "../../../services/categoryService";
 import categoryValidator from "../../../validators/categoryValidator";
 
 var router = express.Router();
 
-router.post("/", async (req: Request, res: Response) => {
-  const { search, page, perPage, orderBy, ascend, paginated } = req.body;
-
-  res.json(
-    await categoryService.search(
-      {
-        search: search ?? "",
-        page: parseInt((page ?? "1") as string),
-        perPage: parseInt((perPage ?? "5") as string),
-        orderBy: orderBy as string ?? "id",
-        ascend: (ascend ?? true) == true,
-        paginated: paginated ?? true,
-      },
-    ),
-  );
-});
+router.post(
+  "/",
+  async (req: Request, res: Response) => {
+    const { search, page, perPage, orderBy, ascend, paginated } = req.body;
+    res.json(
+      await categoryService.search(
+        {
+          search: search ?? "",
+          page: parseInt((page ?? "1") as string),
+          perPage: parseInt((perPage ?? "5") as string),
+          orderBy: orderBy as string ?? "id",
+          ascend: (ascend ?? true) == true,
+          paginated: paginated ?? true,
+        },
+      ),
+    );
+  },
+);
 
 //create category
 router.post(
   "/create",
-  requireApiRole("admin"),
   categoryValidator,
   async (req: Request, res: Response) => {
     const errors = validationResult(req);
@@ -69,7 +69,6 @@ router.post(
 //update category and upload image
 router.post(
   "/update",
-  requireApiRole("admin"),
   categoryValidator,
   async (req: Request, res: Response) => {
     const errors = validationResult(req);
@@ -114,7 +113,6 @@ router.post(
 //delete category and delete image
 router.post(
   "/delete",
-  requireApiRole("admin"),
   async (req: Request, res: Response) => {
     const { id } = req.body;
 

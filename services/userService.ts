@@ -18,12 +18,7 @@ const checkEmailExists = async (email: string): Promise<boolean> => {
 const createUser = async (
   data: Prisma.userCreateInput,
 ) => {
-  var randomstring = require("randomstring");
-
-  const activationToken = randomstring.generate(8);
-
   data.passwordHash = bcrypt.hashSync(data.passwordHash, 10);
-  data.activationToken = activationToken;
 
   var user = await dataSource.user.create({
     data: data,

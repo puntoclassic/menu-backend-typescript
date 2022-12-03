@@ -7,6 +7,7 @@ router.use("/foods", require("./foodRoutes"));
 router.use("/orders", require("./orderRoutes"));
 router.use("/account", require("./accountRoutes"));
 router.use("/cart", require("./cartRoutes"));
+router.use("/setting", require("./settingRoutes"));
 
 //admin routes
 router.use("/admin", require("./admin/rootRoutes"));
