@@ -79,7 +79,7 @@ router.post("/login", loginValidator, async (req: Request, res: Response) => {
       res.status(200).json(
         {
           "status": "Login success",
-          "token": token,
+          "user": user,
         },
       );
     } else {
