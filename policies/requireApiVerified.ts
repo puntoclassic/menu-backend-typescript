@@ -8,7 +8,7 @@ export default async (req: Request, res: Response, next: Function) => {
   if (token) {
     jwt.verify(token, accessTokenSecret, (err: any, decoded: any) => {
       if (!err) {
-        if (!decoded.verified) {
+        if (!req.session.user.verified) {
           res.status(403).json({
             "status": "Account not actived",
           });

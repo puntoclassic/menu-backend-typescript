@@ -69,12 +69,19 @@ router.post("/login", loginValidator, async (req: Request, res: Response) => {
       var user: any = await userService.getByEmail(req.body.email);
 
       var token = jwt.sign(
-        user,
+        {
+          id: user.id,
+        },
         accessTokenSecret,
         jwtOptions,
       );
 
-      res.cookie("token", token);
+      res.cookie("token", token, {
+        httpOnly: true,
+        sameSite: "lax",
+        secure: true,
+        path: "/",
+      });
 
       res.status(200).json(
         {
