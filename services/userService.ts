@@ -91,6 +91,7 @@ const validateLogin = async (
 const getById = async (id: number) => {
   return await dataSource.user.findFirst({
     select: {
+      id: true,
       firstname: true,
       lastname: true,
       role: true,
