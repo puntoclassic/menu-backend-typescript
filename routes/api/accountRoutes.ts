@@ -206,18 +206,6 @@ router.post("/resend-activation-email", async (req: Request, res: Response) => {
   }
 });
 
-/*
-
-Enable csrf for SPA
-
-router.use(csurf({ cookie: false }));
-
-router.get("/csrf", (req: Request, res: Response) => {
-  res.send(req.csrfToken());
-});
-
-*/
-
 router.post(
   "/emailIsBusy",
   async (req: Request, res: Response) => {

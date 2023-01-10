@@ -22,6 +22,7 @@ app.use(cors({
     "http://localhost:3000",
     "http://localhost:4200",
     "http://localhost",
+    "http://127.0.0.1:3000",
   ],
 }));
 
@@ -41,6 +42,8 @@ app.use(cookieParser());
 //static contents
 app.use(express.static("public"));
 app.use("/public", express.static("public"));
+
+//add settings to every page
 
 //sessions
 app.use(
